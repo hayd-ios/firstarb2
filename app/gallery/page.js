@@ -1,93 +1,19 @@
 'use client'
 import React, { useState } from 'react'
 import Image from 'next/image'
+import { services as galleryItems } from '../data/services'
 
-const galleryItems = [
-  {
-    id: 1,
-    title: 'Large Oak Removal',
-    category: 'tree-removal',
-    description: 'Complete removal of a 100-year-old oak tree in Cheltenham',
-    image: 'https://placehold.co/800x600/234/fff/webp?text=Tree+Removal+1',
-    date: '2024-01'
-  },
-  {
-    id: 2,
-    title: 'Crown Reduction',
-    category: 'crown-management',
-    description: 'Professional crown reduction of mature beech tree',
-    image: 'https://placehold.co/800x600/234/fff/webp?text=Crown+Work+1',
-    date: '2024-02'
-  },
-  {
-    id: 3,
-    title: 'Hedge Trimming',
-    category: 'hedge-care',
-    description: 'Formal hedge maintenance for a country estate',
-    image: 'https://placehold.co/800x600/234/fff/webp?text=Hedge+Care+1',
-    date: '2024-02'
-  },
-  {
-    id: 4,
-    title: 'Storm Damage',
-    category: 'emergency',
-    description: 'Emergency response to storm-damaged trees',
-    image: 'https://placehold.co/800x600/234/fff/webp?text=Emergency+Work+1',
-    date: '2024-01'
-  },
-  {
-    id: 5,
-    title: 'Stump Grinding',
-    category: 'stump-removal',
-    description: 'Complete stump removal service',
-    image: 'https://placehold.co/800x600/234/fff/webp?text=Stump+Removal+1',
-    date: '2024-03'
-  },
-  {
-    id: 6,
-    title: 'Site Clearance',
-    category: 'site-clearance',
-    description: 'Commercial site vegetation clearance',
-    image: 'https://placehold.co/800x600/234/fff/webp?text=Site+Clearance+1',
-    date: '2024-03'
-  },
-  // Add more items for each category
-  {
-    id: 7,
-    title: 'Cedar Removal',
-    category: 'tree-removal',
-    description: 'Sectional dismantling of large cedar tree',
-    image: 'https://placehold.co/800x600/234/fff/webp?text=Tree+Removal+2',
-    date: '2024-02'
-  },
-  {
-    id: 8,
-    title: 'Crown Thinning',
-    category: 'crown-management',
-    description: 'Crown thinning for improved light penetration',
-    image: 'https://placehold.co/800x600/234/fff/webp?text=Crown+Work+2',
-    date: '2024-03'
-  },
-  {
-    id: 9,
-    title: 'Conifer Hedge',
-    category: 'hedge-care',
-    description: 'Conifer hedge reduction and shaping',
-    image: 'https://placehold.co/800x600/234/fff/webp?text=Hedge+Care+2',
-    date: '2024-01'
-  },
-  // Add more items as needed
-]
 
-const categories = [
-  { id: 'all', name: 'All Work' },
-  { id: 'tree-removal', name: 'Tree Removal' },
-  { id: 'crown-management', name: 'Crown Management' },
-  { id: 'hedge-care', name: 'Hedge Care' },
-  { id: 'emergency', name: 'Emergency Work' },
-  { id: 'stump-removal', name: 'Stump Removal' },
-  { id: 'site-clearance', name: 'Site Clearance' }
-]
+
+// const categories = [
+//   { id: 'all', name: 'All Work' },
+//   { id: 'tree-removal', name: 'Tree Removal' },
+//   { id: 'crown-management', name: 'Crown Management' },
+//   { id: 'hedge-care', name: 'Hedge Care' },
+//   { id: 'emergency', name: 'Emergency Work' },
+//   { id: 'stump-removal', name: 'Stump Removal' },
+//   { id: 'site-clearance', name: 'Site Clearance' }
+// ]
 
 const GalleryPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('all')
@@ -117,7 +43,7 @@ const GalleryPage = () => {
       {/* Gallery Section */}
       <div className="bg-white">
         <div className="max-w-[1600px] mx-auto px-8 py-24">
-          {/* Category Filter */}
+          {/* Category Filter
           <div className="flex flex-wrap gap-4 mb-16">
             {categories.map((category) => (
               <button
@@ -131,7 +57,7 @@ const GalleryPage = () => {
                 {category.name}
               </button>
             ))}
-          </div>
+          </div> */}
 
           {/* Gallery Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

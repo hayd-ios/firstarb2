@@ -15,7 +15,7 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-  title: "First Arb - Tree Surgery Services in Cheltenham",
+  title: "Professional Tree Surgery Services in Cheltenham | First Arb",
   description: "Professional tree surgery services in Cheltenham and surrounding areas. Covering all aspects of tree care.",
   keywords: "tree surgery, arborist, tree removal, tree care, Cheltenham, tree services, tree maintenance, tree pruning, stump removal",
   authors: [{ name: "First Arb Tree Services Cheltenham" }],

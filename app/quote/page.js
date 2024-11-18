@@ -34,11 +34,60 @@ const QuotePage = () => {
     setStep(2)
   }
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    // Handle form submission
-    console.log(formData)
-  }
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitError('');
+    
+    try {
+      const response = await fetch('/api/send-quote', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      const data = await response.json();
+  
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to submit quote request');
+      }
+  
+      setSubmitSuccess(true);
+      // Optional: Reset form
+      setFormData({
+        service: '',
+        details: {
+          treeCount: '1',
+          treeHeight: 'medium',
+          access: 'easy',
+          urgency: 'normal'
+        },
+        location: {
+          address: '',
+          postcode: '',
+          propertyType: 'residential'
+        },
+        contact: {
+          name: '',
+          email: '',
+          phone: '',
+          preferredContact: 'email',
+          notes: ''
+        }
+      });
+      setStep(1);
+    } catch (error) {
+      setSubmitError(error.message);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <main>
@@ -86,6 +135,19 @@ const QuotePage = () => {
 
           {/* Form Steps */}
           <div className="max-w-4xl mx-auto">
+          <div className='my-8'>
+          {submitError && (
+                  <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded">
+                    {submitError}
+                  </div>
+                )}
+
+                {submitSuccess && (
+                  <div className="bg-green-50 border border-green-200 text-green-600 px-4 py-3 rounded">
+                    Thank you! Your quote request has been submitted successfully.
+                  </div>
+                )}
+          </div>
             {step === 1 && (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {services.map((service) => (
@@ -368,19 +430,22 @@ const QuotePage = () => {
                     type="button"
                     onClick={() => setStep(3)}
                     className="text-gray-600 hover:text-gray-900"
+                    disabled={isSubmitting}
                   >
                     Back
                   </button>
                   <button
                     type="submit"
-                    className="bg-green-500 text-white px-8 py-4 rounded-lg hover:bg-green-600 transition-colors"
+                    className="bg-green-500 text-white px-8 py-4 rounded-lg hover:bg-green-600 transition-colors disabled:opacity-50"
+                    disabled={isSubmitting}
                   >
-                    Submit Quote Request
+                    {isSubmitting ? 'Submitting...' : 'Submit Quote Request'}
                   </button>
                 </div>
               </form>
             )}
           </div>
+          
         </div>
       </div>
     </main>

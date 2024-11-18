@@ -57,7 +57,7 @@ const AboutPage = () => {
             <div className="relative aspect-[4/3] rounded-3xl overflow-hidden">
               <div className="absolute inset-0 bg-gray-900/10"></div>
               <Image
-                src="/assets/about-hero.jpg"
+                src="/assets/img1.jpg"
                 alt="Professional Tree Surgery"
                 fill
                 className="object-cover"

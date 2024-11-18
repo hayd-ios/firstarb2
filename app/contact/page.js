@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from 'react'
-import Footer from '../components/footer'
+
 const ContactPage = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -10,11 +10,46 @@ const ContactPage = () => {
     message: ''
   })
 
-  const handleSubmit = (e) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // form submission will be handled here
-    // TODO: Set up resend for emails
-    console.log(formData)
+    setIsSubmitting(true);
+    setSubmitError('');
+    
+    try {
+      const response = await fetch('/api/send-contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message');
+      }
+
+      setSubmitSuccess(true);
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        service: 'general',
+        message: ''
+      });
+
+    } catch (error) {
+      setSubmitError(error.message);
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -34,8 +69,21 @@ const ContactPage = () => {
       </div>
 
       {/* Main Content */}
-      <div className="bg-white">
+      <div className="bg-white text-gray-900">
         <div className="max-w-[1600px] mx-auto px-8 py-24">
+          <div className='my-8'>
+          {submitError && (
+                  <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded">
+                    {submitError}
+                  </div>
+                )}
+
+                {submitSuccess && (
+                  <div className="bg-green-50 border border-green-200 text-green-600 px-4 py-3 rounded">
+                    Thank you! Your message has been sent successfully.
+                  </div>
+                )}
+          </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Contact Form */}
             <div>
@@ -130,9 +178,10 @@ const ContactPage = () => {
 
                 <button
                   type="submit"
-                  className="w-full bg-green-500 text-white px-8 py-4 rounded-lg hover:bg-green-600 transition-colors"
+                  className="w-full bg-green-500 text-white px-8 py-4 rounded-lg hover:bg-green-600 transition-colors disabled:opacity-50"
+                  disabled={isSubmitting}
                 >
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
               </form>
             </div>

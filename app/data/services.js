@@ -3,7 +3,7 @@ export const services = [
       id: 'tree-removal',
       title: 'Tree Removal & Felling',
       description: 'Professional and safe removal of trees of all sizes, including sectional dismantling and crane-assisted removals.',
-      image: '/assets/services/tree-removal.jpg',
+      image: '/assets/img1.jpg',
       features: [
         'Complete tree removal',
         'Sectional dismantling',
@@ -39,7 +39,7 @@ export const services = [
       id: 'crown-management',
       title: 'Crown Management',
       description: 'Expert crown reduction, thinning, and reshaping services to improve tree health and appearance.',
-      image: '/assets/services/crown-management.jpg',
+      image: '/assets/img2.jpg',
       features: [
         'Crown reduction',
         'Crown thinning',
@@ -75,7 +75,7 @@ export const services = [
       id: 'hedge-care',
       title: 'Hedge & Shrub Care',
       description: 'Comprehensive hedge trimming and maintenance services for all types of hedges and ornamental shrubs.',
-      image: '/assets/services/hedge-care.jpg',
+      image: '/assets/img3.jpg',
       features: [
         'Regular maintenance',
         'Height reduction',
@@ -111,7 +111,7 @@ export const services = [
       id: 'stump-removal',
       title: 'Stump Removal',
       description: 'Complete stump removal and grinding services to clear your space for new landscaping projects.',
-      image: '/assets/services/stump-removal.jpg',
+      image: '/assets/img4.jpg',
       features: [
         'Stump grinding',
         'Root removal',
@@ -147,7 +147,7 @@ export const services = [
       id: 'emergency',
       title: 'Emergency Services',
       description: '24/7 emergency tree care service for storm damage, fallen trees, and hazardous situations.',
-      image: '/assets/services/emergency.jpg',
+      image: '/assets/img5.jpg',
       features: [
         '24/7 response',
         'Storm damage clearance',
@@ -183,7 +183,7 @@ export const services = [
       id: 'site-clearance',
       title: 'Site Clearance',
       description: 'Professional vegetation clearance services for development projects and land management.',
-      image: '/assets/services/site-clearance.jpg',
+      image: '/assets/img6.jpg',
       features: [
         'Complete site clearance',
         'Vegetation management',
