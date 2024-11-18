@@ -117,9 +117,9 @@ const AboutPage = () => {
               Contact us today for a free consultation and quote. Our expert team is ready 
               to help with all your tree care needs.
             </p>
-            <button className="bg-green-500 text-white px-8 py-4 rounded-full hover:bg-green-600 transition-colors">
+            <a href="/contact" className="bg-green-500 text-white px-8 py-4 rounded-full hover:bg-green-600 transition-colors">
               Get in Touch
-            </button>
+            </a>
           </div>
         </div>
       </div>
