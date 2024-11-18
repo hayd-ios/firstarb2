@@ -58,15 +58,15 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="text-gray-400">
                 <span className="block text-sm">Phone</span>
-                01242 000000
+                01452 904720
               </li>
               <li className="text-gray-400">
                 <span className="block text-sm">Email</span>
-                info@firstarb.co.uk
+                trees@firstarb.co.uk
               </li>
               <li className="text-gray-400">
                 <span className="block text-sm">Emergency 24/7</span>
-                07000 000000
+                07821 908487
               </li>
             </ul>
           </div>
