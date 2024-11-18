@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Block access to specific folders
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*?*
+Disallow: /tmp/
+Disallow: /cdn-cgi/
+
+# Add your sitemap location
+Sitemap: https://firstarb.co.uk/sitemap.xml
