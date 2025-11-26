@@ -1,18 +1,10 @@
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req) {
   try {
     const data = await req.json();
-
-    // Create transporter using your email settings
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      secure: false,
-      auth: {
-        user: "haydenamc19216@gmail.com",
-        pass: "jbkrcxlfyvkpccse"
-      },
-    });
 
     // Format the email content
     const emailContent = `
@@ -42,9 +34,10 @@ export async function POST(req) {
     `;
 
     // Send email
-    await transporter.sendMail({
-      from: "Tree Works Quote Request <haydenamc19216@gmail.com>",
-      to: "trees@firstarb.co.uk",
+    await resend.emails.send({
+      from: 'FirstArb Quote Request <noreply@firstarbmail.online>',
+      to: 'trees@firstarb.co.uk',
+      replyTo: data.contact.email,
       subject: 'New Tree Work Quote Request',
       text: emailContent,
     });
